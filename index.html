@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragdoll Archers</title>
+    <style>
+        /* Reset de estilos básicos */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        /* Estilos de la página para ingresar la URL */
+        #urlPage {
+            display: block;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        #urlPage input {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #urlPage button {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #urlPage button:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Estilos del contenedor del iframe */
+        #gameContainer {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Página donde se ingresa la URL -->
+    <div id="urlPage">
+        <h1>Ingrese la URL del juego</h1>
+        <input type="url" id="gameUrl" placeholder="https://www.1001juegos.com/embed/ragdoll-archers" />
+        <button onclick="loadGame()">Entrar al juego</button>
+    </div>
+
+    <!-- Contenedor del iframe, que se muestra cuando se carga el juego -->
+    <div id="gameContainer">
+        <iframe id="gameIframe" src="" frameborder="0" allow="gamepad *;"></iframe>
+    </div>
+
+    <script>
+        function loadGame() {
+            var url = document.getElementById('gameUrl').value;
+            if(url) {
+                // Oculta la página de URL y muestra el contenedor del juego
+                document.getElementById('urlPage').style.display = 'none';
+                document.getElementById('gameContainer').style.display = 'block';
+                // Establece la URL del iframe
+                document.getElementById('gameIframe').src = url;
+            } else {
+                alert('Por favor ingrese una URL válida.');
+            }
+        }
+    </script>
+
+</body>
+</html>
